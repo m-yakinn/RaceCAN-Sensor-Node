@@ -1,47 +1,68 @@
-# RaceCAN Sensor Node
+# RaceCAN Digital Kit
 
-RaceCAN Sensor Node is a CAN based low voltage telemetry board designed for motorsports, robotics, and Formula SAE style systems.
+RaceCAN Digital Kit is a complete digital engineering kit for learning CAN based low voltage telemetry systems used in motorsports, robotics, and Formula SAE style projects.
 
-The goal of this project is to build a small embedded sensor node that can read vehicle style sensor data, detect fault conditions, transmit telemetry over CAN bus, and log data to a dashboard.
+The kit is designed around a simulated low voltage sensor node that reads vehicle style sensor data, detects fault conditions, sends telemetry using a CAN style message protocol, and displays live data through a software dashboard.
 
-This project is being built to strengthen my skills in PCB design, embedded firmware, CAN communication, sensor interfacing, and low voltage electrical systems.
+The long term goal is to create a downloadable product that includes hardware design files, firmware templates, CAN protocol documentation, a telemetry simulator, dashboard software, and setup guides.
 
-## V1 Features
+## Project Purpose
 
-RaceCAN Sensor Node V1 will include:
+This project is being built to develop practical skills in:
 
-1. Battery voltage sensing
-2. Thermistor temperature sensing
-3. Potentiometer input to simulate throttle or brake position
-4. Digital fault input
-5. CAN bus telemetry output
+1. Hardware system design
+2. PCB architecture
+3. Embedded firmware
+4. CAN communication
+5. Sensor interfacing
 6. Fault detection logic
-7. Status LED
-8. Fault LED
-9. Shutdown output pin
-10. Python based serial or CAN dashboard
+7. Python dashboard software
+8. Technical documentation
+9. Digital product development
 
-## System Overview
+## Why This Matters
 
-Sensors:
-- Battery voltage input
-- Thermistor input
-- Throttle or brake potentiometer
-- Digital fault input
+Low voltage electronics teams in electric vehicle and Formula SAE style systems need reliable sensor data, safe fault handling, and clear communication between modules.
 
-Microcontroller:
-- Reads sensor values
-- Filters raw data
-- Detects fault conditions
-- Packages CAN messages
+RaceCAN Digital Kit models those ideas in a way that can be studied, simulated, modified, and eventually manufactured by students or small engineering teams.
 
-CAN Transceiver:
-- Sends telemetry over CAN bus
+## V1 Deliverables
 
-Receiver Node or USB CAN Adapter:
-- Reads CAN messages
-- Sends data to laptop
+RaceCAN Digital Kit V1 will include:
 
-Python Dashboard:
-- Displays live values
-- Logs data to CSV
+1. CAN message protocol documentation
+2. Fault logic documentation
+3. System architecture documentation
+4. Simulated sensor node firmware logic
+5. Python CAN telemetry simulator
+6. Python dashboard and CSV logger
+7. KiCad style hardware design plan
+8. Future PCB design files
+9. Setup guide
+10. Testing checklist
+
+## V1 Simulated Signals
+
+The first version will simulate:
+
+1. Battery voltage
+2. Temperature
+3. Throttle position
+4. Brake position
+5. Current draw
+6. Fault flags
+7. Heartbeat messages
+
+## Final Product Vision
+
+The final digital kit will be packaged as a downloadable folder containing:
+
+1. Hardware design files
+2. Firmware templates
+3. Simulator code
+4. Dashboard code
+5. CAN documentation
+6. Setup instructions
+7. Testing guide
+8. Example data logs
+9. Design explanation notes
