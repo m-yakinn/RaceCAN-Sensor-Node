@@ -53,6 +53,27 @@ The first version will simulate:
 6. Fault flags
 7. Heartbeat messages
 
+## V1 Development Focus
+
+RaceCAN Digital Kit V1 will focus on a fully simulated low voltage telemetry system.
+
+The first working version will not require physical hardware. Instead, it will use Python software to simulate a sensor node, generate CAN style telemetry messages, detect fault conditions, and display live data through a dashboard.
+
+This allows the project to demonstrate the full hardware, firmware, and software architecture before physical PCB manufacturing.
+
+## V1 Software Flow
+
+```text
+Sensor Data Generator
+        ↓
+Fault Detection Logic
+        ↓
+CAN Style Message Encoder
+        ↓
+Telemetry Stream
+        ↓
+Dashboard and CSV Logger
+
 ## Final Product Vision
 
 The final digital kit will be packaged as a downloadable folder containing:
