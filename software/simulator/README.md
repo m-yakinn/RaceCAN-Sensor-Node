@@ -38,3 +38,6 @@ From the `software/simulator` folder, run:
 
 ```bash
 python simulator.py
+1. normal
+2. warning
+3. fault
