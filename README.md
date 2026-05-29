@@ -87,3 +87,25 @@ The final digital kit will be packaged as a downloadable folder containing:
 7. Testing guide
 8. Example data logs
 9. Design explanation notes
+
+## Current Working Demo
+
+RaceCAN Digital Kit currently includes a working Python simulator and terminal dashboard.
+
+The simulator generates CAN style telemetry messages for:
+
+1. Battery voltage
+2. Temperature
+3. Throttle position
+4. Brake position
+5. Current draw
+6. Fault states
+7. Heartbeat status
+
+The dashboard displays live telemetry, active faults, recent CAN style messages, and saves data to a CSV log.
+
+To run the dashboard:
+
+```bash
+cd software/dashboard
+python dashboard.py
