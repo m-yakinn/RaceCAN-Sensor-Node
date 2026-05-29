@@ -1,12 +1,12 @@
 # RaceCAN Dashboard
 
-This folder will contain the dashboard and CSV logging tools for RaceCAN Digital Kit.
+This folder contains the terminal dashboard and CSV logging tools for RaceCAN Digital Kit.
 
 ## Purpose
 
-The dashboard displays live telemetry values, active faults, and recent CAN style messages.
+The dashboard displays live telemetry values, active faults, and recent CAN style messages from the simulator.
 
-## Planned Features
+## Current Features
 
 1. Live voltage display
 2. Live temperature display
@@ -15,13 +15,21 @@ The dashboard displays live telemetry values, active faults, and recent CAN styl
 5. Live current display
 6. System state display
 7. Active fault display
-8. Recent message log
+8. Recent CAN style message display
 9. CSV logging
 
-## First Milestone
+## Files
 
-The first milestone is a terminal based dashboard that displays the latest telemetry values and updates continuously.
+| File | Purpose |
+|---|---|
+| dashboard.py | Main terminal dashboard |
+| csv_logger.py | Saves telemetry data to CSV |
+| README.md | Dashboard documentation |
 
-## Later Improvements
+## How to Run
 
-Future versions may use Streamlit or a web based interface for charts, buttons, and cleaner visualization.
+From the root project folder, run:
+
+```bash
+cd software/dashboard
+python dashboard.py
