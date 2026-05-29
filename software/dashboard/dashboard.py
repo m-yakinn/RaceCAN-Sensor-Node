@@ -6,7 +6,6 @@ import sys
 import time
 
 
-# Allows dashboard.py to import files from software/simulator
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 SOFTWARE_DIR = os.path.dirname(CURRENT_DIR)
 SIMULATOR_DIR = os.path.join(SOFTWARE_DIR, "simulator")
@@ -25,31 +24,47 @@ def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
 
 
+def format_state(system_state):
+    if system_state == "NORMAL":
+        return "NORMAL"
+    if system_state == "WARNING":
+        return "WARNING"
+    if system_state == "FAULT":
+        return "FAULT"
+    return system_state
+
+
 def print_dashboard(telemetry, faults, messages):
     clear_terminal()
 
+    active_faults = get_active_faults(faults)
+
     print("RaceCAN Digital Kit Live Dashboard")
-    print("=" * 45)
+    print("=" * 55)
     print()
-    print(f"Timestamp:       {round(telemetry['timestamp'], 2)} s")
-    print(f"Node ID:         {telemetry['node_id']}")
+    print("System Summary")
+    print("-" * 55)
+    print(f"Timestamp:        {round(telemetry['timestamp'], 2)} s")
+    print(f"Node ID:          {telemetry['node_id']}")
+    print(f"System State:     {format_state(telemetry['system_state'])}")
+    print(f"Active Faults:    {active_faults}")
     print()
-    print(f"Battery Voltage: {telemetry['battery_voltage']} V")
-    print(f"Temperature:     {telemetry['temperature_c']} C")
-    print(f"Throttle:        {telemetry['throttle_percent']}%")
-    print(f"Brake:           {telemetry['brake_percent']}%")
-    print(f"Current:         {telemetry['current_a']} A")
-    print()
-    print(f"System State:    {telemetry['system_state']}")
-    print(f"Active Faults:   {get_active_faults(faults)}")
+    print("Live Telemetry")
+    print("-" * 55)
+    print(f"Battery Voltage:  {telemetry['battery_voltage']} V")
+    print(f"Temperature:      {telemetry['temperature_c']} C")
+    print(f"Throttle:         {telemetry['throttle_percent']} percent")
+    print(f"Brake:            {telemetry['brake_percent']} percent")
+    print(f"Current Draw:     {telemetry['current_a']} A")
     print()
     print("Recent CAN Style Messages")
-    print("-" * 45)
+    print("-" * 55)
 
     for message in messages:
-        print(f"{message['can_id']} | {message['name']} | {message['data']}")
+        print(f"{message['can_id']}  {message['name']}")
 
     print()
+    print("Telemetry is being saved to racecan_log.csv")
     print("Press Ctrl+C to stop.")
 
 
@@ -76,11 +91,12 @@ def run_dashboard(mode):
             time.sleep(SIMULATION_DELAY_SECONDS)
 
     except KeyboardInterrupt:
-        print("\nDashboard stopped.")
+        print()
+        print("Dashboard stopped.")
         print("Telemetry log saved to racecan_log.csv")
 
 
-if __name__ == "__main__":
+def get_mode_from_user():
     print("Select dashboard simulation mode:")
     print("1. normal")
     print("2. warning")
@@ -89,13 +105,16 @@ if __name__ == "__main__":
     choice = input("Enter choice: ").strip()
 
     if choice == "1":
-        selected_mode = "normal"
-    elif choice == "2":
-        selected_mode = "warning"
-    elif choice == "3":
-        selected_mode = "fault"
-    else:
-        print("Invalid choice. Defaulting to normal mode.")
-        selected_mode = "normal"
+        return "normal"
+    if choice == "2":
+        return "warning"
+    if choice == "3":
+        return "fault"
 
+    print("Invalid choice. Defaulting to normal mode.")
+    return "normal"
+
+
+if __name__ == "__main__":
+    selected_mode = get_mode_from_user()
     run_dashboard(selected_mode)
