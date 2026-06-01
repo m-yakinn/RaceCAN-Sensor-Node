@@ -21,6 +21,8 @@ It allows users to test the RaceCAN system without physical hardware.
 9. Fault detection logic
 10. CAN style JSON message formatting
 11. Terminal output
+12. Command line mode selection
+13. Fixed cycle runs
 
 ## Files
 
@@ -38,6 +40,3 @@ From the `software/simulator` folder, run:
 
 ```bash
 python simulator.py
-1. normal
-2. warning
-3. fault
