@@ -1,6 +1,7 @@
 # RaceCAN Digital Kit
-# Terminal dashboard for simulated telemetry
+# Terminal dashboard for simulated telemetry with command line options
 
+import argparse
 import os
 import sys
 import time
@@ -18,6 +19,9 @@ from fault_logic import check_faults
 from message_encoder import encode_messages
 from config import SIMULATION_DELAY_SECONDS
 from csv_logger import log_telemetry, get_active_faults
+
+
+VALID_MODES = ["normal", "warning", "fault"]
 
 
 def clear_terminal():
@@ -68,14 +72,28 @@ def print_dashboard(telemetry, faults, messages):
     print("Press Ctrl+C to stop.")
 
 
-def run_dashboard(mode):
+def run_dashboard(mode, cycles):
     print("Starting RaceCAN dashboard...")
+    print(f"Mode: {mode}")
+
+    if cycles is None:
+        print("Cycles: continuous")
+    else:
+        print(f"Cycles: {cycles}")
+
     time.sleep(1)
 
     start_time = time.time()
+    cycle_count = 0
 
     try:
         while True:
+            if cycles is not None and cycle_count >= cycles:
+                print()
+                print("Dashboard completed requested cycles.")
+                print("Telemetry log saved to racecan_log.csv")
+                break
+
             timestamp = time.time() - start_time
 
             telemetry = generate_telemetry(timestamp, mode)
@@ -88,6 +106,7 @@ def run_dashboard(mode):
             print_dashboard(telemetry, faults, messages)
             log_telemetry(telemetry, faults)
 
+            cycle_count += 1
             time.sleep(SIMULATION_DELAY_SECONDS)
 
     except KeyboardInterrupt:
@@ -96,7 +115,7 @@ def run_dashboard(mode):
         print("Telemetry log saved to racecan_log.csv")
 
 
-def get_mode_from_user():
+def get_mode_interactively():
     print("Select dashboard simulation mode:")
     print("1. normal")
     print("2. warning")
@@ -115,6 +134,32 @@ def get_mode_from_user():
     return "normal"
 
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description="RaceCAN Digital Kit terminal dashboard"
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=VALID_MODES,
+        help="Dashboard simulation mode: normal, warning, or fault",
+    )
+
+    parser.add_argument(
+        "--cycles",
+        type=int,
+        help="Number of dashboard update cycles to run. Leave blank for continuous mode.",
+    )
+
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    selected_mode = get_mode_from_user()
-    run_dashboard(selected_mode)
+    args = parse_arguments()
+
+    if args.mode is None:
+        selected_mode = get_mode_interactively()
+    else:
+        selected_mode = args.mode
+
+    run_dashboard(selected_mode, args.cycles)
