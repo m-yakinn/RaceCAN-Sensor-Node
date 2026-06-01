@@ -1,6 +1,7 @@
 # RaceCAN Digital Kit
-# Basic telemetry simulator
+# Basic telemetry simulator with command line options
 
+import argparse
 import random
 import time
 import json
@@ -8,6 +9,9 @@ import json
 from config import NODE_ID, SIMULATION_DELAY_SECONDS
 from fault_logic import check_faults
 from message_encoder import encode_messages
+
+
+VALID_MODES = ["normal", "warning", "fault"]
 
 
 def generate_normal_telemetry(timestamp):
@@ -64,15 +68,26 @@ def generate_telemetry(timestamp, mode):
     return generate_normal_telemetry(timestamp)
 
 
-def run_simulator(mode):
+def run_simulator(mode, cycles):
     print("RaceCAN Digital Kit Simulator")
     print(f"Mode: {mode}")
+
+    if cycles is None:
+        print("Cycles: continuous")
+    else:
+        print(f"Cycles: {cycles}")
+
     print("Press Ctrl+C to stop.\n")
 
     start_time = time.time()
+    cycle_count = 0
 
     try:
         while True:
+            if cycles is not None and cycle_count >= cycles:
+                print("\nSimulator completed requested cycles.")
+                break
+
             timestamp = time.time() - start_time
 
             telemetry = generate_telemetry(timestamp, mode)
@@ -87,13 +102,14 @@ def run_simulator(mode):
 
             print("-" * 60)
 
+            cycle_count += 1
             time.sleep(SIMULATION_DELAY_SECONDS)
 
     except KeyboardInterrupt:
         print("\nSimulator stopped.")
 
 
-if __name__ == "__main__":
+def get_mode_interactively():
     print("Select simulation mode:")
     print("1. normal")
     print("2. warning")
@@ -102,13 +118,42 @@ if __name__ == "__main__":
     choice = input("Enter choice: ").strip()
 
     if choice == "1":
-        selected_mode = "normal"
-    elif choice == "2":
-        selected_mode = "warning"
-    elif choice == "3":
-        selected_mode = "fault"
-    else:
-        print("Invalid choice. Defaulting to normal mode.")
-        selected_mode = "normal"
+        return "normal"
+    if choice == "2":
+        return "warning"
+    if choice == "3":
+        return "fault"
 
-    run_simulator(selected_mode)
+    print("Invalid choice. Defaulting to normal mode.")
+    return "normal"
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description="RaceCAN Digital Kit telemetry simulator"
+    )
+
+    parser.add_argument(
+        "--mode",
+        choices=VALID_MODES,
+        help="Simulation mode: normal, warning, or fault",
+    )
+
+    parser.add_argument(
+        "--cycles",
+        type=int,
+        help="Number of telemetry cycles to run. Leave blank for continuous mode.",
+    )
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_arguments()
+
+    if args.mode is None:
+        selected_mode = get_mode_interactively()
+    else:
+        selected_mode = args.mode
+
+    run_simulator(selected_mode, args.cycles)
