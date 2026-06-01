@@ -17,6 +17,8 @@ The dashboard displays live telemetry values, active faults, and recent CAN styl
 7. Active fault display
 8. Recent CAN style message display
 9. CSV logging
+10. Command line mode selection
+11. Fixed cycle runs
 
 ## Files
 
