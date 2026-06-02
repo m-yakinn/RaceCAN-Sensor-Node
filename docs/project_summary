@@ -1,0 +1,81 @@
+# Project Summary
+
+RaceCAN Digital Kit is a software simulated low voltage telemetry system designed for motorsports, robotics, and Formula SAE style learning.
+
+The project models how a sensor node reads vehicle style signals, detects warnings and faults, packages data into CAN style messages, displays telemetry on a dashboard, and logs data to CSV.
+
+## What Was Built
+
+Week 1 produced a working software demo with:
+
+1. Python telemetry simulator
+2. CAN style message encoder
+3. Fault detection logic
+4. Terminal dashboard
+5. CSV logger
+6. Command line interface
+7. Product focused documentation
+
+## Simulated Signals
+
+RaceCAN V1 simulates:
+
+1. Battery voltage
+2. Temperature
+3. Throttle position
+4. Brake position
+5. Current draw
+6. External fault state
+7. Heartbeat status
+
+## Faults and Warnings
+
+RaceCAN V1 detects:
+
+1. Voltage warning
+2. Undervoltage fault
+3. Temperature warning
+4. Overtemperature fault
+5. Current warning
+6. Overcurrent fault
+7. Sensor range fault
+8. External fault
+9. Communication fault placeholder
+
+## CAN Style Messages
+
+RaceCAN V1 uses these message IDs:
+
+| CAN ID | Message Name |
+|---|---|
+| 0x100 | Heartbeat |
+| 0x101 | Voltage Status |
+| 0x102 | Temperature Status |
+| 0x103 | Driver Inputs |
+| 0x104 | Current Status |
+| 0x105 | Fault Status |
+
+## Why This Matters
+
+This project demonstrates full system thinking across:
+
+1. Hardware architecture
+2. Firmware style logic
+3. CAN communication concepts
+4. Fault handling
+5. Dashboard software
+6. Data logging
+7. Technical documentation
+
+## Formula E Relevance
+
+RaceCAN Digital Kit is relevant to Formula E low voltage electronics because it models the type of system used to monitor vehicle signals, detect unsafe conditions, and communicate module status across a vehicle network.
+
+The project shows preparation for work involving:
+
+1. Low voltage telemetry
+2. Sensor data acquisition
+3. CAN bus communication
+4. Embedded systems logic
+5. Safety oriented fault handling
+6. Debugging and documentation
