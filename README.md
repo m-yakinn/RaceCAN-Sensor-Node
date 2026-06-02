@@ -1,96 +1,32 @@
 # RaceCAN Digital Kit
 
-RaceCAN Digital Kit is a complete digital engineering kit for learning CAN based low voltage telemetry systems used in motorsports, robotics, and Formula SAE style projects.
+RaceCAN Digital Kit is a digital engineering kit for learning CAN based low voltage telemetry systems used in motorsports, robotics, and Formula SAE style projects.
 
-The kit is designed around a simulated low voltage sensor node that reads vehicle style sensor data, detects fault conditions, sends telemetry using a CAN style message protocol, and displays live data through a software dashboard.
-
-The long term goal is to create a downloadable product that includes hardware design files, firmware templates, CAN protocol documentation, a telemetry simulator, dashboard software, and setup guides.
+The project models a low voltage sensor node that reads vehicle style signals, detects warning and fault conditions, sends telemetry using a CAN style message protocol, displays live data through a dashboard, and logs data to CSV.
 
 ## Project Purpose
 
 This project is being built to develop practical skills in:
 
 1. Hardware system design
-2. PCB architecture
-3. Embedded firmware
-4. CAN communication
-5. Sensor interfacing
-6. Fault detection logic
-7. Python dashboard software
+2. Firmware style logic
+3. CAN communication
+4. Sensor data modeling
+5. Fault detection
+6. Python dashboard software
+7. Data logging
 8. Technical documentation
 9. Digital product development
 
 ## Why This Matters
 
-Low voltage electronics teams in electric vehicle and Formula SAE style systems need reliable sensor data, safe fault handling, and clear communication between modules.
+Low voltage electronics teams in electric vehicle and Formula SAE style systems rely on sensor data, fault handling, and communication between modules.
 
-RaceCAN Digital Kit models those ideas in a way that can be studied, simulated, modified, and eventually manufactured by students or small engineering teams.
-
-## V1 Deliverables
-
-RaceCAN Digital Kit V1 will include:
-
-1. CAN message protocol documentation
-2. Fault logic documentation
-3. System architecture documentation
-4. Simulated sensor node firmware logic
-5. Python CAN telemetry simulator
-6. Python dashboard and CSV logger
-7. KiCad style hardware design plan
-8. Future PCB design files
-9. Setup guide
-10. Testing checklist
-
-## V1 Simulated Signals
-
-The first version will simulate:
-
-1. Battery voltage
-2. Temperature
-3. Throttle position
-4. Brake position
-5. Current draw
-6. Fault flags
-7. Heartbeat messages
-
-## V1 Development Focus
-
-RaceCAN Digital Kit V1 will focus on a fully simulated low voltage telemetry system.
-
-The first working version will not require physical hardware. Instead, it will use Python software to simulate a sensor node, generate CAN style telemetry messages, detect fault conditions, and display live data through a dashboard.
-
-This allows the project to demonstrate the full hardware, firmware, and software architecture before physical PCB manufacturing.
-
-## V1 Software Flow
-
-```text
-Sensor Data Generator
-        ↓
-Fault Detection Logic
-        ↓
-CAN Style Message Encoder
-        ↓
-Telemetry Stream
-        ↓
-Dashboard and CSV Logger
-
-## Final Product Vision
-
-The final digital kit will be packaged as a downloadable folder containing:
-
-1. Hardware design files
-2. Firmware templates
-3. Simulator code
-4. Dashboard code
-5. CAN documentation
-6. Setup instructions
-7. Testing guide
-8. Example data logs
-9. Design explanation notes
+RaceCAN Digital Kit models those ideas in a way that can be studied, simulated, modified, and eventually extended into real firmware and PCB hardware.
 
 ## Current Working Demo
 
-RaceCAN Digital Kit currently includes a working Python simulator and terminal dashboard.
+RaceCAN currently includes a working Python simulator and terminal dashboard.
 
 The simulator generates CAN style telemetry messages for:
 
@@ -102,10 +38,71 @@ The simulator generates CAN style telemetry messages for:
 6. Fault states
 7. Heartbeat status
 
-The dashboard displays live telemetry, active faults, recent CAN style messages, and saves data to a CSV log.
+The dashboard displays:
 
-To run the dashboard:
+1. Live telemetry values
+2. System state
+3. Active faults
+4. Recent CAN style messages
+5. CSV logging output
 
-```bash
-cd software/dashboard
-python dashboard.py
+## V1 Simulated Signals
+
+| Signal | Unit | Description |
+|---|---|---|
+| Battery voltage | V | Simulated low voltage battery voltage |
+| Temperature | C | Simulated board or system temperature |
+| Throttle position | Percent | Simulated driver throttle input |
+| Brake position | Percent | Simulated driver brake input |
+| Current draw | A | Simulated electrical current draw |
+| External fault | Boolean | Simulated external fault condition |
+
+## CAN Style Messages
+
+| CAN ID | Message Name | Purpose |
+|---|---|---|
+| 0x100 | Heartbeat | Confirms that the node is alive |
+| 0x101 | Voltage Status | Sends battery voltage and voltage faults |
+| 0x102 | Temperature Status | Sends temperature and temperature faults |
+| 0x103 | Driver Inputs | Sends throttle and brake values |
+| 0x104 | Current Status | Sends current draw and current faults |
+| 0x105 | Fault Status | Sends active fault flags |
+
+## Project Structure
+
+```text
+RaceCAN-Sensor-Node/
+  docs/
+    can_protocol.md
+    cli_usage.md
+    data_model.md
+    dashboard_plan.md
+    fault_logic.md
+    future_roadmap.md
+    product_overview.md
+    project_summary.md
+    simulator_plan.md
+    system_architecture.md
+    testing_checklist.md
+    v1_requirements.md
+
+  software/
+    simulator/
+      simulator.py
+      config.py
+      fault_logic.py
+      message_encoder.py
+      requirements.txt
+
+    dashboard/
+      dashboard.py
+      csv_logger.py
+      racecan_log.csv
+
+  hardware/
+    README.md
+
+  firmware/
+    README.md
+
+  images/
