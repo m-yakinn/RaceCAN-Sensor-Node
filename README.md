@@ -106,3 +106,22 @@ RaceCAN-Sensor-Node/
     README.md
 
   images/
+
+## Firmware Template
+
+RaceCAN now includes an Arduino style firmware template that models how the telemetry node logic could run on a physical microcontroller.
+
+The firmware template includes:
+
+1. Sensor input reading
+2. Engineering unit conversion
+3. Fault detection
+4. Status and fault outputs
+5. CAN style message formatting
+6. Placeholder CAN transmission
+7. Serial debug output
+
+Firmware location:
+
+```text
+firmware/racecan_firmware_template/
