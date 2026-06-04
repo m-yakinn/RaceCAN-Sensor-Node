@@ -40,7 +40,7 @@ CAN Bus
         ↓
 Dashboard or Receiver Node
 
-'''
+```
 ## Planned Sensor Inputs
 
 | Signal | Type | Purpose |
@@ -61,3 +61,4 @@ Dashboard or Receiver Node
 | Status LED | Digital | Indicates firmware is running |
 | Fault LED | Digital | Indicates active fault |
 | Shutdown output | Digital | Indicates critical fault condition |
+
