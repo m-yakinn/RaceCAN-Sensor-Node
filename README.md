@@ -107,7 +107,31 @@ RaceCAN-Sensor-Node/
 
   images/
 
-## Firmware Template
+## Hardware Architecture
+
+RaceCAN includes hardware architecture documentation for a future CAN based low voltage telemetry PCB.
+
+The hardware design plan includes:
+
+1. Sensor input circuits
+2. Power input protection
+3. Voltage regulation
+4. CAN transceiver design
+5. Connector planning
+6. Pin mapping
+7. Test point planning
+8. Future KiCad schematic preparation
+
+Hardware documentation is located in:
+
+```text
+hardware/
+docs/hardware_architecture.md
+docs/pin_mapping.md
+docs/connector_plan.md
+```
+
+The current hardware layer is documentation only. Future work will add KiCad schematic and PCB layout files.
 
 RaceCAN now includes an Arduino style firmware template that models how the telemetry node logic could run on a physical microcontroller.
 
