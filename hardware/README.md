@@ -1,28 +1,42 @@
 # Hardware Design
 
-This folder will contain the hardware design portion of RaceCAN Digital Kit.
+This folder contains the hardware design planning for RaceCAN Digital Kit.
 
-## Planned Contents
+## Purpose
 
-1. System block diagram
-2. KiCad schematic
-3. KiCad PCB layout
-4. Gerber files
-5. Bill of materials
-6. Fabrication notes
-7. PCB design explanation
+The hardware design models a CAN based low voltage telemetry sensor node.
 
-## Hardware Goal
+The current project does not require physical hardware, but the hardware documentation explains how the simulated system could become a real PCB.
 
-The hardware design will model a low voltage telemetry sensor node with:
+## Current Hardware Documentation
+
+| File | Purpose |
+|---|---|
+| system_block_diagram.md | Text-based hardware system diagram |
+| sensor_input_design.md | Sensor input circuit explanations |
+| power_design.md | Power input, protection, and regulation plan |
+| can_transceiver_design.md | CAN physical layer and transceiver plan |
+
+## Planned Hardware Blocks
 
 1. Microcontroller
 2. CAN transceiver
-3. Protected analog inputs
-4. Voltage sensing input
-5. Thermistor input
-6. Driver input connectors
-7. Power regulation
-8. Reverse polarity protection
+3. Power input protection
+4. Voltage regulation
+5. Analog sensor inputs
+6. Digital fault input
+7. Status LEDs
+8. Shutdown output
 9. Test points
-10. Status LEDs
+10. Connectors
+
+## Future KiCad Work
+
+Future hardware work will include:
+
+1. KiCad schematic
+2. PCB layout
+3. Bill of materials
+4. Gerber files
+5. Connector pinout
+6. Assembly notes
