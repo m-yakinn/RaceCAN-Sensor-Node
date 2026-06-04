@@ -40,30 +40,24 @@ CAN Bus
         ↓
 Dashboard or Receiver Node
 
-Planned Sensor Inputs
-Signal	Type	Purpose
-Battery voltage	Analog	Monitor low voltage supply
-Temperature	Analog	Monitor board or system temperature
-Throttle position	Analog	Simulate driver input
-Brake position	Analog	Simulate driver input
-Current draw	Analog	Monitor electrical load
-External fault	Digital	Simulate external shutdown/fault signal
-Planned Outputs
-Output	Type	Purpose
-CAN High	Communication	CAN bus differential signal
-CAN Low	Communication	CAN bus differential signal
-Status LED	Digital	Indicates firmware running
-Fault LED	Digital	Indicates active fault
-Shutdown output	Digital	Indicates critical fault condition
-Design Priorities
+'''
+## Planned Sensor Inputs
 
-The board should be designed for:
+| Signal | Type | Purpose |
+|---|---|---|
+| Battery voltage | Analog | Monitor low voltage supply |
+| Temperature | Analog | Monitor board or system temperature |
+| Throttle position | Analog | Simulate driver input |
+| Brake position | Analog | Simulate driver input |
+| Current draw | Analog | Monitor electrical load |
+| External fault | Digital | Simulate external shutdown/fault signal |
 
-Easy debugging
-Clear signal routing
-Protected inputs
-Reliable power
-Clear connector labeling
-Testability
-Beginner-friendly assembly
-Future PCB manufacturing
+## Planned Outputs
+
+| Output | Type | Purpose |
+|---|---|---|
+| CAN High | Communication | CAN bus differential signal |
+| CAN Low | Communication | CAN bus differential signal |
+| Status LED | Digital | Indicates firmware is running |
+| Fault LED | Digital | Indicates active fault |
+| Shutdown output | Digital | Indicates critical fault condition |
