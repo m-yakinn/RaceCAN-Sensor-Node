@@ -8,7 +8,7 @@
 
 ## 1. Purpose of This Document
 
-Days 1–9 defined *what* the node does: read analog sensors (battery voltage, temperature, throttle, brake, current), run fault logic, and broadcast telemetry on a CAN bus using message IDs `0x100`–`0x105`. This document defines *what physical parts would implement that architecture*, and — more importantly for a portfolio — **why each part was chosen** over the alternatives.
+Days 1–9 defined *what* the node does: read analog sensors (battery voltage, temperature, throttle, brake, current), run fault logic, and broadcast telemetry on a CAN bus using message IDs `0x100`–`0x105`. This document defines *what physical parts would implement that architecture*, and — more importantly — **why each part was chosen** over the alternatives.
 
 Every selection below is justified on three axes that matter on a race car:
 
