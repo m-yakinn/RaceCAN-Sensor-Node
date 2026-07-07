@@ -11,3 +11,8 @@ state = bms.update()
 
 frames = encoder.encode(state, chemistry="lipo", capacity_mah=2500)
 # Returns list of 6 dicts: {frame_id, dlc, data (bytes), signals (dict)}
+from bms_to_can import BMSCANDecoder
+
+decoder = BMSCANDecoder()
+decoded = decoder.decode(0x201, raw_bytes)
+# Returns: {'current_a': 5.0, 'soc_percent': 50, 'shutdown_signal': 0, 'system_state': 'NORMAL'}
