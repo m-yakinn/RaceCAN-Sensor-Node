@@ -1,0 +1,100 @@
+          # Future Roadmap
+
+This roadmap describes the development path for RaceCAN Sensor Node.
+
+---
+
+## Phase 1: Software Simulation
+
+**Status: Complete**
+
+All simulation, protocol, BMS, and testing work is done. The software stack is the primary portfolio artifact.
+
+Goals:
+
+1. Build telemetry simulator — DONE
+2. Build terminal dashboard — DONE
+3. Add CSV logging — DONE
+4. Add command line options — DONE
+5. Document system behavior — DONE
+6. Define CAN message map (0x100-0x105) — DONE
+7. Write protocol unit tests (34 cases) — DONE
+8. Build BMS simulator with fault state machine — DONE
+9. Build BMS-to-CAN encoder/decoder (0x200-0x205) — DONE
+10. Write BMS and integration tests (31 cases total) — DONE
+
+---
+
+## Phase 2: Better Dashboard
+
+**Status: Planned**
+
+Goals:
+
+1. Add fault history panel
+2. Add summary statistics (session min/max, fault count)
+3. Add log file selection at startup
+4. Add optional Streamlit dashboard
+5. Add voltage, temperature, and current trend plots
+
+---
+
+## Phase 3: Firmware Template
+
+**Status: Complete**
+
+Goals:
+
+1. Add Arduino-style firmware template — DONE
+2. Add STM32-style firmware notes — DONE
+3. Add sensor reading functions — DONE
+4. Add fault logic functions — DONE
+5. Add CAN transmit pseudocode — DONE
+6. Add firmware architecture documentation — DONE
+7. Add C and Python receiver-side examples — DONE
+8. Document known limitations and open decisions — DONE
+
+---
+
+## Phase 4: Hardware Design
+
+**Status: Planned — requires KiCad desktop tool**
+
+Documentation is complete (schematic plan, netlist, BOM, PCB floorplan, layout guidelines, protection analysis). KiCad capture has not started.
+
+Goals:
+
+1. Create KiCad schematic from existing schematic plan
+2. Assign footprints to all components
+3. Run ERC (electrical rules check)
+4. Translate floorplan into KiCad PCB layout
+5. Route power, CAN differential pair, and signal traces
+6. Add test points
+7. Run DRC (design rules check)
+8. Export Gerbers and drill files
+9. Finalize BOM with Digikey/Mouser part numbers
+
+Open decisions that must be resolved before capture:
+
+- MP1584EN feedback resistor divider for exact 5.0 V output
+- MCP2515 interrupt vs polling (affects PD2 routing)
+- D11-D13 SPI pin relocation (per docs/pin_mapping.md)
+
+---
+
+## Phase 5: Closing the Loop
+
+**Status: In progress**
+
+Goals:
+
+1. Fix docs/day_12_progress.md naming inconsistency — IN PROGRESS
+2. Update README to reflect full project scope — DONE
+3. Update this roadmap to reflect completed phases — DONE
+4. Knowledge assessment: protocol design, fault logic, state machines
+5. Circuitry assessment: feedback divider math, TVS selection, ACS712 circuit, SPI/CAN interface, reverse polarity protection, decoupling strategy
+6. Create setup guide for running the simulator
+7. Create user manual for the CAN protocol
+8. Package simulator, firmware, and hardware docs as a downloadable kit
+
+---
